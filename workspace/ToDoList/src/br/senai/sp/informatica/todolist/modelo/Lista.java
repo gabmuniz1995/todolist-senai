@@ -5,10 +5,15 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+ 
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 //projeto do gabriel muniz de lima
 @Entity
 public class Lista {
@@ -18,7 +23,7 @@ public class Lista {
 	private Long id;
 	@Column(length = 100)
 	private String titulo;
-	@OneToMany(mappedBy = "lista", cascade=CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(mappedBy = "lista", fetch=FetchType.EAGER, cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<ItemLista> itens;
 
 	// metodos de acesso
@@ -46,6 +51,7 @@ public class Lista {
 		this.itens = itens;
 	}
 
+	@JsonProperty(value="feito")
 	public boolean isRealizada() {
 		for (ItemLista item : itens) {
 			if (!(item.isFeito())) {
@@ -54,5 +60,6 @@ public class Lista {
 		}
 		return true;
 	}
+	
 
 }

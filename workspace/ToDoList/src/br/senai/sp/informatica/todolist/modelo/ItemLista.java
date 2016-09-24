@@ -21,7 +21,7 @@ public class ItemLista {
 	private Long id;
 	private String descricao;
 	private boolean feito;
-	@ManyToOne
+	@ManyToOne(optional=false)
 	@JoinColumn(name="lista_id")
 	private Lista lista;
 	

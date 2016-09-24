@@ -1,0 +1,30 @@
+package br.senai.sp.informatica.todolist.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.senai.sp.informatica.todolist.dao.ItemDAO;
+
+@RestController 
+public class ItemRestController {
+
+	@Autowired
+	private ItemDAO itemDao;
+	
+	@RequestMapping(value="/item/{id}", method=RequestMethod.PUT, 
+			produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Void> excluir(@PathVariable("id") long idItem, @PathVariable("feito") String strFeito){
+		boolean resp = false;
+		if(strFeito.equals("feito"))
+			resp = true;
+			
+		itemDao.marcarFeito(idItem, resp);
+		 return ResponseEntity.noContent().build();
+	}
+	
+}
