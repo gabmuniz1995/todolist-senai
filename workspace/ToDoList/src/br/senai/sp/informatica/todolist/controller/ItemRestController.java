@@ -1,8 +1,7 @@
 package br.senai.sp.informatica.todolist.controller;
 
-import java.awt.event.ItemListener;
-import java.net.URI;
 
+import java.net.URI;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -14,10 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import br.senai.sp.informatica.todolist.dao.ItemDAO;
 import br.senai.sp.informatica.todolist.modelo.ItemLista;
-import br.senai.sp.informatica.todolist.modelo.Lista;
+
 
 @RestController 
 public class ItemRestController {
